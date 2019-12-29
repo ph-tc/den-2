@@ -46,13 +46,14 @@
         o = document.querySelector(".checkbox__btn-content"),
         c = document.querySelector("[data-href]");
       e.addEventListener("click", function (n) {
+        if ( !document.querySelector("[data-ready]") ) {
+          n.preventDefault();
+        }
         var target = n.target;
 
         if (target.classList.contains('checkbox__btn-square')) {
-          var link = document.querySelector('.main--link');
           e.dataset.ready || (n.preventDefault(), r.classList.add("checked"), n.target !== c ? (e.dataset.ready = "ready", setTimeout(function () {
             t.classList.remove("hidden"), o.classList.add("visually-hidden");
-            link.href = '#btnLink';
           }, 300)) : window.location.href = c.dataset.href);
         }
       });
